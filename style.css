@@ -51,11 +51,49 @@ header.navbar {
   z-index: 100;
 }
 
-nav a {
+/* Nav desktop */
+.nav-main a {
   margin: 0 0.8rem;
   font-weight: 500;
   color: var(--accent);
   text-decoration: none;
+}
+
+/* Bottone hamburger nascosto su desktop */
+.nav-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Tre linee dell’hamburger */
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 4px 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.lang-switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-switch .lang-btn {
+  margin: 0;
 }
 
 .lang-btn {
@@ -88,7 +126,6 @@ h1 {
   font-family: var(--font-title);
   font-size: 2.3rem;
   color: var(--text);
-  letter-spacing: 0.15rem;
 }
 
 /* === SLIDER === */
@@ -101,6 +138,7 @@ h1 {
   padding: 2rem 0;
   cursor: grab;
   scrollbar-width: none;
+  position: relative;
 }
 .slider:active { cursor: grabbing; }
 
@@ -131,6 +169,32 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: none;           /* di default nascoste (desktop) */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  z-index: 10;
+}
+
+.slider-prev {
+  left: 12px;
+}
+
+.slider-next {
+  right: 12px;
 }
 
 /* Immagini sempre intere e centrali */
@@ -694,6 +758,54 @@ body.modal-open {
   color: var(--muted);
 }
 
+/* === CV HEADER WITH PHOTO === */
+
+.cv-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cv-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.cv-header-text {
+  flex: 1;
+}
+
+.cv-header-text .cv-title {
+  margin: 0 0 0.3rem;
+}
+
+.cv-header-text .cv-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+
+.cv-header-text .cv-role {
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile: impila foto sopra il testo */
+@media (max-width: 700px) {
+  .cv-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cv-photo img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
 /* ==== CONTACTS MODAL ==== */
 
 .contacts-modal-content {
@@ -832,4 +944,265 @@ body.modal-open {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+.cv-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cv-photo img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cv-header-text {
+  flex: 1; /* occupa lo spazio centrale */
+}
+
+.cv-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-left: auto; /* spinge i pulsanti al margine destro */
+}
+
+.cv-btn {
+  padding: 0.5rem 0.9rem;
+  background: #333;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border: 1px solid #555;
+  white-space: nowrap;
+}
+
+.cv-btn:hover {
+  background: #444;
+}
+
+@media (max-width: 700px) {
+  .cv-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cv-downloads {
+    flex-direction: row;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  header.navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .name h1 {
+    font-size: 1.3rem;
+  }
+
+  .name p {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Mostra l’hamburger su mobile */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* MENU FULLSCREEN */
+  .nav-main {
+    position: fixed;
+    inset: 0;                     /* copre tutto lo schermo */
+    background: var(--card-bg);
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      /* centrai verticalmente */
+    align-items: center;          /* centrai orizzontalmente */
+    gap: 1rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: 999;                 /* sopra tutto */
+  }
+
+  /* Link in colonna, centrati e più grandi */
+  .nav-main a {
+    display: block;
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  /* wrapper lingue orizzontale */
+  .lang-switch {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .lang-switch .lang-btn {
+    margin: 0;
+  }
+
+  /* quando il menu è aperto */
+  .navbar.nav-open .nav-main {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* animazione icona hamburger → X */
+  .navbar.nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .navbar.nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar.nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 700px) {
+  /* slider: niente scroll orizzontale del contenitore esterno,
+     ma della track interna */
+  .slider {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow: hidden;
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .slider.focused article.expanded {
+    flex-direction: column;
+  }
+
+  .slider-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider article {
+    flex: 0 0 96%;
+    max-width: 96%;
+    scroll-snap-align: center;
+  }
+
+  .slider article img {
+    width: 100%;
+    height: auto;
+    max-height: 360px; /* invece di 260px */
+    object-fit: contain;
+  }
+
+  /* frecce visibili solo su mobile */
+  .slider-arrow {
+    display: flex;
+  }
+}
+
+@media (max-width: 900px) {
+  body:not(.modal-open):not(.focused) #portfolio {
+    min-height: auto;
+    display: block;
+    align-items: stretch;
+  }
+
+  main {
+    padding: 1.5rem 0 2.5rem; /* invece di 3rem 0 */
+  }
+}
+
+@media (max-width: 700px) {
+  /* Modalità focus su mobile: niente tagli in alto, contenuto scrollabile */
+  .slider.focused {
+    height: auto !important;              /* annulla il 100vh precedente */
+    min-height: calc(100vh - 72px);       /* spazio visivo sotto l'header */
+    overflow-y: auto !important;          /* abilita scroll verticale */
+    overflow-x: hidden !important;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .slider.focused .slider-track {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start !important;
+  }
+
+  .slider.focused article.expanded {
+    flex: 0 0 auto;
+    max-width: 100%;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .slider.focused article.expanded img {
+    width: auto;
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+  }
+  .slider.focused .slider-arrow {
+  display: none !important;
+}
+}
+
+/* Pulsante chiusura focus */
+.slider-close {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* MOBILE — mostra la X SOLO in modalità focus */
+@media (max-width: 700px) {
+  .slider.focused .slider-close {
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(0rem); /* distanza minima dall'immagine */
+  }
+
+  /* assicuriamo che la card expanded sia relative */
+  .slider.focused article.expanded {
+    position: relative;
+  }
 }

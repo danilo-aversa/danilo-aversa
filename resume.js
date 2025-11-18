@@ -18,6 +18,8 @@ function switchLanguage(lang) {
       el.textContent = value;
     }
   });
+
+  updateDownloadLinks(lang);
 }
 
 langButtons.forEach(btn => {
@@ -28,6 +30,21 @@ langButtons.forEach(btn => {
 
 // lingua di default
 switchLanguage("it");
+
+function updateDownloadLinks(lang) {
+  const cvBtn = document.getElementById("btn-cv");
+  const portBtn = document.getElementById("btn-portfolio");
+
+  if (!cvBtn || !portBtn) return;
+
+  if (lang === "it") {
+    cvBtn.href = "assets/pdf/aversa-danilo-cv-it.pdf";
+    portBtn.href = "assets/pdf/aversa-danilo-portfolio-it.pdf";
+  } else {
+    cvBtn.href = "assets/pdf/aversa-danilo-cv-en.pdf";
+    portBtn.href = "assets/pdf/aversa-danilo-portfolio-en.pdf";
+  }
+}
 
 /* === ABOUT FULLSCREEN MODAL === */
 const aboutModal = document.getElementById("about-modal");
@@ -120,3 +137,22 @@ document.addEventListener("keydown", e => {
     closeContactsModal();
   }
 });
+
+const navToggle = document.querySelector(".nav-toggle");
+const navbar = document.querySelector(".navbar");
+const navMain = document.querySelector(".nav-main");
+
+if (navToggle && navbar && navMain) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navbar.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  // chiudi il menu quando clicchi un link
+  navMain.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+      navbar.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}

@@ -10,9 +10,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap"
-  rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
@@ -20,26 +21,41 @@
   <header class="navbar">
     <div class="name">
       <h1>Danilo Aversa</h1>
-      <p>Graphic Designer — Digital, Layout & Motion</p>
+      <p>Graphic Designer — Digital, Layout &amp; Motion</p>
     </div>
-    <nav>
+
+    <!-- Bottone hamburger per mobile -->
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-main">
       <a href="#about" class="about-open" data-it="Chi sono" data-en="About">
         Chi sono
       </a>
-       <a href="#contacts" class="contacts-open" data-it="Contatti" data-en="Contacts">
+      <a href="#contacts" class="contacts-open" data-it="Contatti" data-en="Contacts">
         Contatti
       </a>
-       <a href="resume.html" class="resume-open" data-it="Curriculum" data-en="Resume" style="margin-right: 40px;">
+      <a href="resume.html" class="resume-open" data-it="Curriculum" data-en="Resume">
         Curriculum
       </a>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="en">EN</button>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
   <main>
     <section id="portfolio">
       <div class="slider">
+        <button class="slider-close" aria-label="Close project">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+        <button class="slider-arrow slider-prev" aria-label="Previous project">‹</button>
+        <button class="slider-arrow slider-next" aria-label="Next project">›</button>
         <div class="slider-track">
           <article data-title-it="Copertina Fantasy" data-title-en="Fantasy Cover" data-desc-it="<h3>Burn the Witch</h3>
 <p>Impaginazione completa del manuale (per il gioco Dungeons & Dragons), creazione dei file di stampa e sviluppo di tutti i contenuti: storia, game design e materiali grafici. Ho curato anche la versione interattiva, i PDF finali e una piccola campagna social di supporto.</p>
@@ -52,53 +68,125 @@
             <img src="assets/images/btw.png" alt="Copertina Fantasy">
           </article>
 
-          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
-            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
-            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+          <article data-title-it="Sito Web — Cruor Games" data-title-en="Website — Cruor Games" data-desc-it="
+  <h3>Cruor Games — Sito Ufficiale</h3>
+  <p>Progettazione completa dell'interfaccia e delle funzionalità del sito dedicato ai contenuti del creator Cruor Games. Ho definito l'identità visiva, sviluppato elementi interattivi (come mappe interattive e sezioni dinamiche) e curato aspetti di accessibilità, tra cui tema chiaro/scuro e interlinea regolabile dall'utente.</p>
+  <p>Il sito è attualmente in sviluppo: al momento (18/11/2025) sono disponibili solo alcuni contenuti, come il <i>Druid</i> e la <i>Tower of Silence</i>. Il progetto è consultabile su <a href='https://www.cruorgames.com' target='_blank'>www.cruorgames.com</a>.</p>
+  <p><b>Strumenti:</b> HTML, CSS, JavaScript, Illustrator, Photoshop</p>
+  <p><b>Output:</b> Prototipo UI/UX, layout grafico, componenti interattivi, sistema accessibilità</p>" data-desc-en="
+  <h3>Cruor Games — Official Website</h3>
+  <p>Full design of the interface and feature set for the official website showcasing the creator’s published content. I defined the visual identity, developed interactive elements (such as interactive maps and dynamic sections), and implemented accessibility features, including light/dark modes and user-adjustable line spacing.</p>
+  <p>The website is currently under construction: as of November, 18 2025, only a few sections are available, specifically the <i>Druid</i> and the <i>Tower of Silence</i>. The project is available at <a href='https://www.cruorgames.com' target='_blank'>www.cruorgames.com</a>.</p>
+  <p><b>Tools:</b> HTML, CSS, JavaScript, Illustrator, Photoshop</p>
+  <p><b>Output:</b> UI/UX prototype, graphic layout, interactive components, accessibility system</p>"
             data-img="assets/images/cg.webp">
-            <img src="assets/images/cg.webp" alt="Layout Editoriale">
+
+            <img src="assets/images/cg.webp" alt="Sito Web — Cruor Games">
           </article>
 
-          <article data-type="video" data-title-it="Showreel 2025" data-title-en="Showreel 2025"
-            data-desc-it="Estratto di lavori recenti. Montaggio, compositing e motion graphics."
-            data-desc-en="Selection of recent works. Editing, compositing, and motion graphics."
-            data-video-src="assets/videos/iphone.mp4" data-video-poster="assets/images/iphone.png">
-            <img src="assets/images/iphone.png" alt="Showreel 2025">
+
+          <article data-type="video" data-title-it="Reel Promozionale — Manuale D&D"
+            data-title-en="Promotional Reel — D&D Manual" data-desc-it="
+  <h3>Reel Promozionale — Manuale D&D</h3>
+  <p>Realizzazione di un reel promozionale per Instagram per presentare un manuale di Dungeons & Dragons che ho impaginato. Ho curato l’animazione delle pagine, l’adattamento visivo del contenuto e la struttura informativa orientata alla conversione, mostrando in pochi secondi le caratteristiche principali del prodotto.</p>
+  <p>Il video è stato interamente sviluppato in After Effects, con un ritmo volutamente più calmo e leggibile, in linea con i reel informativi di questo tipo.</p>
+  <p><b>Strumenti:</b> After Effects, Photoshop</p>
+  <p><b>Output:</b> Reel Instagram, asset video ottimizzati per social</p>" data-desc-en="
+  <h3>Promotional Reel — D&D Manual</h3>
+  <p>Creation of a promotional Instagram reel showcasing a Dungeons & Dragons manual I designed and laid out. I handled page animations, visual adaptation of the content, and a conversion-oriented information structure, highlighting the product’s key features within a few seconds.</p>
+  <p>The video was fully produced in After Effects, using a deliberately calmer and more readable pacing, consistent with informational reels of this kind.</p>
+  <p><b>Tools:</b> After Effects, Photoshop</p>
+  <p><b>Output:</b> Instagram reel, social-optimized video assets</p>" data-video-src="assets/videos/iphone.mp4"
+            data-video-poster="assets/images/iphone.png">
+
+            <img src="assets/images/iphone.png" alt="Promotional Reel — D&D Manual">
           </article>
 
-          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
-            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
-            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+
+          <article data-title-it="Seeker — TTRPG" data-title-en="Seeker — TTRPG" data-desc-it="
+  <h3>Seeker — TTRPG</h3>
+  <p>Gioco di ruolo originale che sto sviluppando come Game Designer. Ho definito il sistema di gioco, la direzione artistica e tutta l’identità visiva, oltre a progettare e realizzare il sito che conterrà l’intero materiale di gioco, consultabile su <a href='https://www.seekerttrpg.com' target='_blank' rel='noopener noreferrer'>www.seekerttrpg.com</a>.</p>
+  <p>L’ambientazione, ispirata all'Età delle scoperte spagnola e inglese, richiede un’estetica evocativa e storica: ho utilizzato oro antico, decorazioni elaborate e palette ricche, mantenendo però un impianto moderno e leggibile per assicurare una consultazione chiara delle regole. Il progetto è ancora in sviluppo e i contenuti attuali non rappresentano la versione definitiva.</p>
+  <p><b>Strumenti:</b> HTML, CSS, JavaScript, Illustrator, Photoshop</p>
+  <p><b>Output:</b> Sistema di gioco, identità visiva, design del sito, componenti interattivi</p>" data-desc-en="
+  <h3>Seeker — TTRPG</h3>
+  <p>Original tabletop RPG developed by me as Game Designer. I created the game system, artistic direction, and full visual identity, as well as the website hosting all game materials, available at <a href='https://www.seekerttrpg.com' target='_blank' rel='noopener noreferrer'>www.seekerttrpg.com</a>.</p>
+  <p>The setting, inspired by the Spanish and English Age of Discovery, required an evocative and historically influenced aesthetic. I used antique gold tones, ornate decorative elements, and rich palettes while maintaining a modern, readable structure for clear rules navigation. The project is still in development, and current content is not final.</p>
+  <p><b>Tools:</b> HTML, CSS, JavaScript, Illustrator, Photoshop</p>
+  <p><b>Output:</b> Game system, visual identity, website design, interactive components</p>"
             data-img="assets/images/seeker.webp">
-            <img src="assets/images/seeker.webp" alt="Layout Editoriale">
+
+            <img src="assets/images/seeker.webp" alt="Seeker — TTRPG">
           </article>
 
-          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
-            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
-            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+
+          <article data-title-it="Instagram Format — Cruor Games" data-title-en="Instagram Format — Cruor Games"
+            data-desc-it="
+  <h3>Instagram Format — Cruor Games</h3>
+  <p>Sviluppo del format grafico per il profilo Instagram di Cruor Games, dove vengono pubblicati tutti i contenuti settimanali del creator. Ho progettato uno stile visivo coerente con il tono macabro del brand, mantenendo però una struttura facilmente riproducibile per supportare una frequenza di pubblicazione di circa tre post a settimana.</p>
+  <p>Per ottimizzare il flusso produttivo ho realizzato template modulari in Illustrator e After Effects, inclusa un’animazione di un libro che si sfoglia con all’interno il nuovo contenuto settimanale. Il sistema permette di aggiornare rapidamente testi e immagini e generare nuovi post in pochi minuti.</p>
+  <p><b>Strumenti:</b> Illustrator, After Effects, Photoshop</p>
+  <p><b>Output:</b> Template grafici riutilizzabili, animazioni social, format per pubblicazione ricorrente</p>"
+            data-desc-en="
+  <h3>Instagram Format — Cruor Games</h3>
+  <p>Development of the graphic format for Cruor Games’ Instagram profile, where all weekly content is published. I created a visually striking style consistent with the creator’s macabre aesthetic, while ensuring it could be reproduced quickly to support a posting schedule of roughly three posts per week.</p>
+  <p>To streamline production I built modular templates in Illustrator and After Effects, including a page-flipping book animation that presents the new weekly content. The system allows for rapid updates of text and images, enabling new posts to be produced in just a few minutes.</p>
+  <p><b>Tools:</b> Illustrator, After Effects, Photoshop</p>
+  <p><b>Output:</b> Reusable graphic templates, social animations, recurring publication format</p>"
             data-img="assets/images/instagram.png">
-            <img src="assets/images/instagram.png" alt="Layout Editoriale">
+
+            <img src="assets/images/instagram.png" alt="Instagram Format — Cruor Games">
           </article>
 
-          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
-            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
-            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+          <article data-title-it="Red Potion Studio — Branding & Web Design"
+            data-title-en="Red Potion Studio — Branding & Web Design" data-desc-it="
+  <h3>Red Potion Studio — Branding & Web Design</h3>
+  <p>Progetto di identità visiva per uno studio grafico dedicato all’industria TTRPG. Ho sviluppato il branding completo: palette, loghi, direzione artistica e stile comunicativo, oltre al design dei servizi e alla loro presentazione.</p>
+  <p>Ho realizzato personalmente il sito, consultabile su <a href='https://danilo-aversa.github.io/red-potion-site/' target='_blank' rel='noopener noreferrer'>https://danilo-aversa.github.io/red-potion-site/</a>, con particolare attenzione al mobile-first design. È stato un lavoro utile per rafforzare la progettazione multidevice, garantendo leggibilità e coerenza visiva su schermi differenti.</p>
+  <p><b>Strumenti:</b> HTML, CSS, JavaScript, Illustrator, Photoshop</p>
+  <p><b>Output:</b> Identità visiva, loghi, palette, sito web responsive, materiali di branding</p>" data-desc-en="
+  <h3>Red Potion Studio — Branding & Web Design</h3>
+  <p>Complete visual identity project for a graphic design studio focused on the TTRPG industry. I developed the full branding system: palette, logos, artistic direction, and service presentation.</p>
+  <p>I built the website myself, available at <a href='https://danilo-aversa.github.io/red-potion-site/' target='_blank' rel='noopener noreferrer'>https://danilo-aversa.github.io/red-potion-site/</a>, applying a strong mobile-first approach. The project required designing every visual element to work effectively across multiple devices and screen sizes.</p>
+  <p><b>Tools:</b> HTML, CSS, JavaScript, Illustrator, Photoshop</p>
+  <p><b>Output:</b> Visual identity, logos, color palette, responsive website, branding materials</p>"
             data-img="assets/images/rps.webp">
-            <img src="assets/images/rps.webp" alt="Layout Editoriale">
+
+            <img src="assets/images/rps.webp" alt="Red Potion Studio — Branding & Web Design">
           </article>
 
-          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
-            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
-            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
-            data-img="assets/images/cg-bc.png">
-            <img src="assets/images/cg-bc.png" alt="Layout Editoriale">
+          <article data-title-it="Materiale Pubblicitario — Modena PLAY 2025"
+            data-title-en="Promotional Material — Modena PLAY 2025" data-desc-it="
+  <h3>Materiale Pubblicitario — Modena PLAY 2025</h3>
+  <p>Progettazione del materiale promozionale per Cruor Games in occasione del Modena PLAY 2025. Ho curato layout, grafica e file stampa, lavorando con una palette complessa che richiedeva attenzione per ottenere una resa cromatica efficace su carta.</p>
+  <p>L’obiettivo era creare un supporto visivamente immediato e riconoscibile: in un contesto dove i visitatori ricevono moltissimi flyer, il design doveva comunicare rapidamente l’identità di Cruor Games ed essere facilmente fruibile tramite QR code.</p>
+  <p><b>Strumenti:</b> Illustrator, InDesign, Photoshop</p>
+  <p><b>Output:</b> File stampa, materiale pubblicitario, asset per evento</p>" data-desc-en="
+  <h3>Promotional Material — Modena PLAY 2025</h3>
+  <p>Design and print-ready production of the promotional materials for Cruor Games at Modena PLAY 2025. I handled layout, graphics, and color preparation, working with a challenging palette that required careful adjustment to reproduce well on paper.</p>
+  <p>The goal was to create a visually striking piece: at a fair where visitors receive large amounts of promotional content, the design had to communicate Cruor Games’ identity at a glance and ensure quick access through the QR code.</p>
+  <p><b>Tools:</b> Illustrator</p>
+  <p><b>Output:</b> Print-ready files, promotional material, event assets</p>" data-img="assets/images/cg-bc.png">
+
+            <img src="assets/images/cg-bc.png" alt="Materiale Pubblicitario — Modena PLAY 2025">
           </article>
 
-          <article data-type="video" data-title-it="Showreel 2025" data-title-en="Showreel 2025"
-            data-desc-it="Estratto di lavori recenti. Montaggio, compositing e motion graphics."
-            data-desc-en="Selection of recent works. Editing, compositing, and motion graphics."
-            data-video-src="assets/videos/animus.mp4" data-video-poster="assets/images/animus.png">
-            <img src="assets/images/animus.png" alt="Showreel 2025">
+
+          <article data-type="video" data-title-it="Animus — App Prototype" data-title-en="Animus — App Prototype"
+            data-desc-it="
+  <h3>Animus — App Prototype</h3>
+  <p>Prototipo animato di un’app ideata nel 2016, dedicata al settore discografico. Ho realizzato un video dimostrativo per spiegare il funzionamento dell’interfaccia e del flusso utente, affrontando un lavoro complesso che richiedeva animazioni dettagliate.</p>
+  <p>È stato uno dei miei primi progetti di motion design e ha rappresentato un passaggio importante per sviluppare capacità di apprendimento rapido e problem solving: ho studiato strumenti e metodi nuovi per portare a termine un prototipo credibile e comunicativo.</p>
+  <p><b>Strumenti:</b> After Effects, Illustrator</p>
+  <p><b>Output:</b> Video prototipale, animazione UI/UX</p>" data-desc-en="
+  <h3>Animus — App Prototype</h3>
+  <p>Animated prototype of an app concept developed in 2016 for the music industry. I produced a demonstration video to showcase the interface and user flow, working through a complex task that required detailed motion design.</p>
+  <p>As one of my first animation-focused projects, it highlighted my ability to learn quickly and adapt to new tools. The work demonstrates not only motion skills but also a strong problem-solving attitude and the capacity to develop functional prototypes from scratch.</p>
+  <p><b>Tools:</b> After Effects, Illustrator</p>
+  <p><b>Output:</b> Prototype video, UI/UX animation</p>" data-video-src="assets/videos/animus.mp4"
+            data-video-poster="assets/images/animus.png">
+
+            <img src="assets/images/animus.png" alt="Animus — App Prototype">
           </article>
 
         </div>

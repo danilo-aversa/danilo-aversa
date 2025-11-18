@@ -286,6 +286,17 @@ function closeFocused() {
   });
 }
 
+/* Pulsante mobile per chiudere focus */
+const closeBtnMobile = document.querySelector(".slider-close");
+if (closeBtnMobile) {
+  closeBtnMobile.addEventListener("click", e => {
+    e.stopPropagation();
+    if (sliderEl.classList.contains("focused")) {
+      closeFocused();
+    }
+  });
+}
+
 /* === Click sulle card con protezione anti-click dopo drag === */
 cards.forEach(card => {
   card.addEventListener("click", e => {
@@ -336,6 +347,48 @@ sliderEl.addEventListener("wheel", e => {
   // Aggiungi scroll orizzontale (0.9 per stabilità)
   sliderEl.scrollLeft += e.deltaY * 0.9;
 }, { passive: false });
+
+/* === FRECCE MOBILE PREV/NEXT === */
+const prevBtn = document.querySelector(".slider-prev");
+const nextBtn = document.querySelector(".slider-next");
+
+function getCardWidth() {
+  const firstCard = cards[0];
+  if (!firstCard) return 0;
+
+  const styles = window.getComputedStyle(trackEl);
+  const gap = parseFloat(styles.gap || styles.columnGap || "0");
+  return firstCard.offsetWidth + gap;
+}
+
+function scrollByCard(direction) {
+  const cardWidth = getCardWidth();
+  if (!cardWidth) return;
+
+  // Su desktop scrolla .slider, su mobile scrolla .slider-track
+  const isMobile = window.matchMedia("(max-width: 700px)").matches;
+  const container = isMobile ? trackEl : sliderEl;
+
+  container.scrollBy({
+    left: direction * cardWidth,
+    behavior: "smooth",
+  });
+}
+
+if (prevBtn && nextBtn && sliderEl && trackEl) {
+  prevBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    // se sei in focus, non fare nulla
+    if (sliderEl.classList.contains("focused")) return;
+    scrollByCard(-1);
+  });
+
+  nextBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    if (sliderEl.classList.contains("focused")) return;
+    scrollByCard(1);
+  });
+}
 
 /* === ABOUT FULLSCREEN MODAL === */
 const aboutModal = document.getElementById("about-modal");
@@ -429,3 +482,22 @@ document.addEventListener("keydown", e => {
     closeContactsModal();
   }
 });
+
+const navToggle = document.querySelector(".nav-toggle");
+const navbar = document.querySelector(".navbar");
+const navMain = document.querySelector(".nav-main");
+
+if (navToggle && navbar && navMain) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navbar.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  // chiudi il menu quando clicchi un link
+  navMain.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+      navbar.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}

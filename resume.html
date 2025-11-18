@@ -20,36 +20,79 @@
   <header class="navbar">
     <div class="name">
       <h1>Danilo Aversa</h1>
-      <p data-it="Graphic Designer — Digital, Layout &amp; Motion"
-        data-en="Graphic Designer — Digital, Layout &amp; Motion">
-        Graphic Designer — Digital, Layout &amp; Motion
-      </p>
+      <p>Graphic Designer — Digital, Layout &amp; Motion</p>
     </div>
-    <nav>
-      <a href="#about" class="about-open" data-it="Chi sono" data-en="About">Chi sono</a>
-      <a href="#contacts" class="contacts-open" data-it="Contatti" data-en="Contacts">Contatti</a>
-      <a href="index.html" data-it="Portfolio" data-en="Portfolio" style="margin-right: 40px">Portfolio</a>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="en">EN</button>
+
+    <!-- Bottone hamburger per mobile -->
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-main">
+      <a href="#about" class="about-open" data-it="Chi sono" data-en="About">
+        Chi sono
+      </a>
+      <a href="#contacts" class="contacts-open" data-it="Contatti" data-en="Contacts">
+        Contatti
+      </a>
+      <a href="index.html" class="portfolio-open" data-it="Portfolio" data-en="Portfolio">
+        Curriculum
+      </a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
   <main class="resume-page">
     <header class="cv-header">
-      <h2 class="cv-title" data-it="CV / Resume" data-en="CV / Resume">CV / Resume</h2>
-      <p class="cv-name">Danilo Aversa</p>
-      <p class="cv-role" data-it="Graphic Designer — Digital, Layout &amp; Motion"
-        data-en="Graphic Designer — Digital, Layout &amp; Motion">
-        Graphic Designer — Digital, Layout &amp; Motion
-      </p>
-      <p class="cv-meta">
-        Ravenna, Italy ·
-        <a href="mailto:danilo.aversa@gmail.com">danilo.aversa@gmail.com</a>
-      </p>
-      <p class="cv-meta">
-        <a href="https://seekerttrpg.com" target="_blank" rel="noreferrer">seekerttrpg.com</a>
-      </p>
+
+      <div class="cv-header-inner">
+
+        <div class="cv-photo">
+          <img src="assets/images/profile.jpeg" alt="Foto di Danilo Aversa">
+        </div>
+
+        <div class="cv-header-text">
+          <h2 class="cv-title" data-it="CV / Resume" data-en="CV / Resume">CV / Resume</h2>
+
+          <p class="cv-name">Danilo Aversa</p>
+
+          <p class="cv-role" data-it="Graphic Designer — Digital, Layout &amp; Motion"
+            data-en="Graphic Designer — Digital, Layout &amp; Motion">
+            Graphic Designer — Digital, Layout &amp; Motion
+          </p>
+
+          <p class="cv-meta">
+            Ravenna, Italy ·
+            <a href="mailto:danilo.aversa@gmail.com">danilo.aversa@gmail.com</a>
+          </p>
+
+          <p class="cv-meta">
+            <a href="https://danilo-aversa.github.io/danilo-aversa/" target="_blank" rel="noreferrer">
+              https://danilo-aversa.github.io/danilo-aversa
+            </a>
+          </p>
+        </div>
+
+        <!-- PULSANTI A DESTRA -->
+        <div class="cv-downloads">
+          <a id="btn-cv" class="cv-btn" href="#" download>
+            <span data-it="Scarica CV (PDF)" data-en="Download CV (PDF)">Scarica CV (PDF)</span>
+          </a>
+
+          <a id="btn-portfolio" class="cv-btn" href="#" download>
+            <span data-it="Scarica Portfolio (PDF)" data-en="Download Portfolio (PDF)">Scarica Portfolio (PDF)</span>
+          </a>
+        </div>
+
+      </div>
+
     </header>
+
 
     <div class="resume-layout">
       <!-- Colonna sinistra -->
