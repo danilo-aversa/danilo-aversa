@@ -1,0 +1,173 @@
+<!-- v1.4 2025-11-03T15:45:00Z -->
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danilo Aversa — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap"
+  rel="stylesheet">
+
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="name">
+      <h1>Danilo Aversa</h1>
+      <p>Graphic Designer — Digital, Layout & Motion</p>
+    </div>
+    <nav>
+      <a href="#about" class="about-open" data-it="Chi sono" data-en="About">
+        Chi sono
+      </a>
+       <a href="#contacts" class="contacts-open" data-it="Contatti" data-en="Contacts">
+        Contatti
+      </a>
+       <a href="resume.html" class="resume-open" data-it="Curriculum" data-en="Resume" style="margin-right: 40px;">
+        Curriculum
+      </a>
+      <button class="lang-btn" data-lang="it">IT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="portfolio">
+      <div class="slider">
+        <div class="slider-track">
+          <article data-title-it="Copertina Fantasy" data-title-en="Fantasy Cover" data-desc-it="<h3>Burn the Witch</h3>
+<p>Impaginazione completa del manuale (per il gioco Dungeons & Dragons), creazione dei file di stampa e sviluppo di tutti i contenuti: storia, game design e materiali grafici. Ho curato anche la versione interattiva, i PDF finali e una piccola campagna social di supporto.</p>
+<p><b>Strumenti:</b> InDesign, Illustrator, Photoshop</p>
+<p><b>Output:</b> PDF interattivo, PDF classico, file pronti stampa, contenuti social</p>" data-desc-en="<h3>Burn the Witch</h3>
+<p>Full layout design and print-ready production of the tabletop RPG module, including writing, game design, and visual materials. I also created the interactive version, final PDFs, and a small supporting social media campaign.</p>
+<p><b>Tools:</b> InDesign, Illustrator, Photoshop</p>
+<p><b>Output:</b> Interactive PDF, standard PDF, print-ready files, social assets</p>"
+            data-img="assets/images/btw.png">
+            <img src="assets/images/btw.png" alt="Copertina Fantasy">
+          </article>
+
+          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
+            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
+            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+            data-img="assets/images/cg.webp">
+            <img src="assets/images/cg.webp" alt="Layout Editoriale">
+          </article>
+
+          <article data-type="video" data-title-it="Showreel 2025" data-title-en="Showreel 2025"
+            data-desc-it="Estratto di lavori recenti. Montaggio, compositing e motion graphics."
+            data-desc-en="Selection of recent works. Editing, compositing, and motion graphics."
+            data-video-src="assets/videos/iphone.mp4" data-video-poster="assets/images/iphone.png">
+            <img src="assets/images/iphone.png" alt="Showreel 2025">
+          </article>
+
+          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
+            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
+            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+            data-img="assets/images/seeker.webp">
+            <img src="assets/images/seeker.webp" alt="Layout Editoriale">
+          </article>
+
+          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
+            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
+            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+            data-img="assets/images/instagram.png">
+            <img src="assets/images/instagram.png" alt="Layout Editoriale">
+          </article>
+
+          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
+            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
+            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+            data-img="assets/images/rps.webp">
+            <img src="assets/images/rps.webp" alt="Layout Editoriale">
+          </article>
+
+          <article data-title-it="Layout Editoriale" data-title-en="Editorial Layout"
+            data-desc-it="Impaginazione per rivista d’arte con tipografia elegante e spazi bilanciati."
+            data-desc-en="Editorial layout for an art magazine with elegant typography and balanced spacing."
+            data-img="assets/images/cg-bc.png">
+            <img src="assets/images/cg-bc.png" alt="Layout Editoriale">
+          </article>
+
+          <article data-type="video" data-title-it="Showreel 2025" data-title-en="Showreel 2025"
+            data-desc-it="Estratto di lavori recenti. Montaggio, compositing e motion graphics."
+            data-desc-en="Selection of recent works. Editing, compositing, and motion graphics."
+            data-video-src="assets/videos/animus.mp4" data-video-poster="assets/images/animus.png">
+            <img src="assets/images/animus.png" alt="Showreel 2025">
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ABOUT FULLSCREEN MODAL -->
+  <div id="about-modal" class="about-modal">
+    <div class="about-modal-inner">
+      <button class="about-close" type="button" aria-label="Chiudi">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="about-modal-content">
+        <div class="about-text">
+          <h2 data-it="Chi sono" data-en="About Me">Chi sono</h2>
+          <p data-it="Sono un Graphic Designer specializzato in impaginazione e produzione per la stampa. Ho imparato il mestiere lavorando su progetti concreti: manuali di giochi di ruolo, identità visive, materiale pubblicitario, contenuti digitali e siti web di cui ho curato grafica e struttura. Quando un progetto richiede qualcosa che non conosco ancora, la studio e la applico subito: è il mio modo preferito di crescere. Lavoro in modo ordinato e attento ai dettagli, così chi collabora con me trova tutto chiaro. Sto ampliando anche la parte di motion design, che considero la mia prossima area di crescita."
+            data-en="I am a Graphic Designer specialized in layout and print production. I learned the craft by working on concrete projects: role-playing game books, visual identities, advertising materials, digital content, and websites where I handled both graphics and structure. Whenever a project requires something I don’t know yet, I study it and apply it straight away – that’s my favorite way to grow. I work in an organized, detail-oriented way, so people who collaborate with me always find everything clear. I am also expanding into motion design, which I see as my next area of growth.">
+            Sono un Graphic Designer specializzato in impaginazione e produzione per la stampa. Ho imparato il mestiere
+            lavorando su progetti concreti: manuali di giochi di ruolo, identità visive, materiale pubblicitario,
+            contenuti digitali e siti web di cui ho curato grafica e struttura. Quando un progetto richiede qualcosa che
+            non conosco ancora, la studio e la applico subito: è il mio modo preferito di crescere. Lavoro in modo
+            ordinato e attento ai dettagli, così chi collabora con me trova tutto chiaro. Sto ampliando anche la parte
+            di motion design, che considero la mia prossima area di crescita.
+          </p>
+        </div>
+        <div class="about-photo">
+          <img src="assets/images/profile.jpeg" alt="Foto di Danilo Aversa">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTS FULLSCREEN MODAL -->
+  <div id="contacts-modal" class="contacts-modal">
+    <div class="contacts-modal-inner">
+      <button class="contacts-close" type="button" aria-label="Chiudi">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="contacts-modal-content">
+        <h2 data-it="Contatti" data-en="Contacts">Contatti</h2>
+
+        <ul class="contacts-list">
+          <li>
+            <span>Email:</span>
+            <a href="mailto:danilo.aversa@gmail.com">danilo.aversa@gmail.com</a>
+          </li>
+
+          <li>
+            <span data-it="Località:" data-en="Location:">Località:</span>
+            Ravenna, Italy
+          </li>
+
+          <li>
+            <span data-it="Telefono:" data-en="Phone:">Telefono:</span>
+            +39 348 822 8181
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Danilo Aversa</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
