@@ -1,12 +1,21 @@
-/* v2.0 2025-11-03T18:20:00Z */
+/* v2.2 2025-11-18T19:50:00Z */
 document.getElementById("year").textContent = new Date().getFullYear();
+
+/* === Costante per localStorage lingua === */
+const LANG_STORAGE_KEY = "portfolioLang";
 
 /* === Lingua === */
 const buttons = document.querySelectorAll(".lang-btn");
-buttons.forEach(btn => btn.addEventListener("click", () => switchLanguage(btn.dataset.lang)));
 
 function switchLanguage(lang) {
   document.documentElement.lang = lang;
+
+  // salva in localStorage (se disponibile)
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
+  } catch (e) {
+    // ignora eventuali errori (es. privacy mode)
+  }
 
   // testi semplici (header, hero, about, pulsanti, ecc.)
   document.querySelectorAll("[data-it]").forEach(el => {
@@ -21,12 +30,36 @@ function switchLanguage(lang) {
     box.innerHTML = descHtml || "";
   });
 }
-switchLanguage("it");
+
+// Lingua iniziale: da localStorage oppure "it"
+let initialLang = "it";
+try {
+  const stored = localStorage.getItem(LANG_STORAGE_KEY);
+  if (stored === "it" || stored === "en") initialLang = stored;
+} catch (e) {}
+switchLanguage(initialLang);
+
+// click sui pulsanti lingua
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang || "it";
+    switchLanguage(lang);
+
+    // se il menu mobile è aperto, chiudilo
+    const navbarEl = document.querySelector(".navbar");
+    const navToggleEl = document.querySelector(".nav-toggle");
+    if (navbarEl && navbarEl.classList.contains("nav-open")) {
+      navbarEl.classList.remove("nav-open");
+      if (navToggleEl) navToggleEl.setAttribute("aria-expanded", "false");
+    }
+  });
+});
 
 /* === Riferimenti slider === */
 const sliderEl = document.querySelector(".slider");
 const trackEl  = document.querySelector(".slider-track");
 const cards    = document.querySelectorAll(".slider article");
+const closeBtnMobile = document.querySelector(".slider-close");
 let active = null;
 
 // posizione salvata prima di entrare in focus
@@ -53,7 +86,7 @@ function centerCardInSlider(slider, card) {
   const current = slider.scrollLeft;
   const deltaToCenter = (cRect.left - sRect.left) + (cRect.width / 2) - (sRect.width / 2);
   const target = current + deltaToCenter;
-  slider.scrollTo({ left: target, behavior: 'smooth' });
+  slider.scrollTo({ left: target, behavior: "smooth" });
 }
 
 /* All’avvio: parti da sinistra */
@@ -264,6 +297,11 @@ function openFocused(card) {
   sliderEl.style.scrollBehavior = "auto";
   sliderEl.scrollLeft = 0;
   sliderEl.style.scrollBehavior = "";
+
+  // Sposta la X dentro la card attiva (solo mobile)
+  if (closeBtnMobile && window.matchMedia("(max-width: 700px)").matches) {
+    card.appendChild(closeBtnMobile);
+  }
 }
 
 function closeFocused() {
@@ -282,12 +320,16 @@ function closeFocused() {
     sliderEl.scrollLeft = savedScrollLeft;
     sliderEl.style.scrollBehavior = "";
 
+    // Riporta la X dentro lo slider (fuori dalla card)
+    if (closeBtnMobile) {
+      sliderEl.appendChild(closeBtnMobile);
+    }
+
     card.removeEventListener("animationend", onEnd);
   });
 }
 
 /* Pulsante mobile per chiudere focus */
-const closeBtnMobile = document.querySelector(".slider-close");
 if (closeBtnMobile) {
   closeBtnMobile.addEventListener("click", e => {
     e.stopPropagation();
@@ -378,7 +420,6 @@ function scrollByCard(direction) {
 if (prevBtn && nextBtn && sliderEl && trackEl) {
   prevBtn.addEventListener("click", e => {
     e.stopPropagation();
-    // se sei in focus, non fare nulla
     if (sliderEl.classList.contains("focused")) return;
     scrollByCard(-1);
   });
@@ -483,9 +524,17 @@ document.addEventListener("keydown", e => {
   }
 });
 
+/* === NAV MOBILE === */
 const navToggle = document.querySelector(".nav-toggle");
 const navbar = document.querySelector(".navbar");
 const navMain = document.querySelector(".nav-main");
+const navCloseBtn = document.querySelector(".nav-close");
+
+function closeNavMenu() {
+  if (!navbar) return;
+  navbar.classList.remove("nav-open");
+  if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+}
 
 if (navToggle && navbar && navMain) {
   navToggle.addEventListener("click", () => {
@@ -493,11 +542,21 @@ if (navToggle && navbar && navMain) {
     navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 
-  // chiudi il menu quando clicchi un link
+  // chiudi il menu quando clicchi un link o il pulsante chiudi
   navMain.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") {
-      navbar.classList.remove("nav-open");
-      navToggle.setAttribute("aria-expanded", "false");
+    const target = e.target;
+    if (!target) return;
+
+    if (target.tagName === "A" || target.classList.contains("nav-close")) {
+      closeNavMenu();
     }
+  });
+}
+
+if (navCloseBtn) {
+  navCloseBtn.addEventListener("click", e => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeNavMenu();
   });
 }

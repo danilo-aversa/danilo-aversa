@@ -1175,15 +1175,15 @@ body.modal-open {
 }
 }
 
-/* Pulsante chiusura focus */
+/* Pulsante chiusura focus (base) */
 .slider-close {
   display: none;
   position: absolute;
   z-index: 9999;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.7);
   border: none;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -1192,17 +1192,44 @@ body.modal-open {
   cursor: pointer;
 }
 
-/* MOBILE — mostra la X SOLO in modalità focus */
+/* MOBILE: bottone centrato sopra l'immagine, solo in focus */
 @media (max-width: 700px) {
+  .slider.focused article.expanded {
+    position: relative;
+    padding-top: 3rem; /* spazio per la X sopra l'immagine */
+  }
+
   .slider.focused .slider-close {
     display: flex;
     left: 50%;
     transform: translateX(-50%);
-    top: calc(0rem); /* distanza minima dall'immagine */
+    top: 0.6rem; /* appena sopra l'immagine */
+  }
+}
+
+/* desktop: pulsante chiudi nascosto */
+.nav-close {
+  display: none;
+}
+
+/* mobile: mostra il pulsante in alto a destra nel menu fullscreen */
+@media (max-width: 700px) {
+  .nav-main {
+    /* hai già le tue regole fullscreen */
+    position: fixed;
+    inset: 0;
+    background: var(--card-bg);
+    /* ... */
   }
 
-  /* assicuriamo che la card expanded sia relative */
-  .slider.focused article.expanded {
-    position: relative;
+  .nav-close {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 }
