@@ -14,11 +14,11 @@
   src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
 }
 @font-face {
-  font-family: Lato;
+  font-family: LatoVariable;
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/Lato.woff2") format("woff2");
+  src: url("/fonts/LatoVariable.woff2") format("woff2");
 }
 
 :root {
@@ -30,7 +30,7 @@
   --radius: 12px;
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
   --font: "Inter", "InterVariable", "Helvetica Neue", Arial, sans-serif;
-  --font-title: "Lato", Georgia, serif;
+  --font-title: "Lato", "LatoVariable" Georgia, serif;
 }
 
 html {
