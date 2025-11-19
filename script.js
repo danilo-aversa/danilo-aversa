@@ -413,11 +413,7 @@ function scrollByCard(direction) {
   const cardWidth = getCardWidth();
   if (!cardWidth) return;
 
-  // Su desktop scrolla .slider, su mobile scrolla .slider-track
-  const isMobile = window.matchMedia("(max-width: 700px)").matches;
-  const container = isMobile ? trackEl : sliderEl;
-
-  container.scrollBy({
+  sliderEl.scrollBy({
     left: direction * cardWidth,
     behavior: "smooth",
   });
