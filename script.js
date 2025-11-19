@@ -362,9 +362,15 @@ cards.forEach(card => {
   });
 });
 
-/* Click ovunque chiude il focus */
+/* Click ovunque chiude il focus (solo desktop) */
 document.addEventListener("click", () => {
-  if (sliderEl.classList.contains("focused")) closeFocused();
+  if (!sliderEl.classList.contains("focused")) return;
+
+  // su mobile NON chiudere con click generico
+  const isMobile = window.matchMedia("(max-width: 700px)").matches;
+  if (isMobile) return;
+
+  closeFocused();
 });
 
 /* ESC per chiudere */
