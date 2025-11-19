@@ -17,11 +17,18 @@ function switchLanguage(lang) {
     // ignora eventuali errori (es. privacy mode)
   }
 
-  // testi semplici (header, hero, about, pulsanti, ecc.)
-  document.querySelectorAll("[data-it]").forEach(el => {
-    const value = el.getAttribute(`data-${lang}`);
-    if (value != null) el.textContent = value;
-  });
+  // testi semplici + elementi che vogliono HTML
+document.querySelectorAll("[data-it]").forEach(el => {
+  const value = el.getAttribute(`data-${lang}`);
+  if (value == null) return;
+
+  // se l'elemento dichiara che contiene HTML, usa innerHTML
+  if (el.dataset.html === "true") {
+    el.innerHTML = value;
+  } else {
+    el.textContent = value;
+  }
+});
 
   // descrizione del lavoro attualmente aperto (HTML)
   document.querySelectorAll(".slider article.expanded").forEach(card => {

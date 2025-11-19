@@ -12,9 +12,22 @@ const langButtons = document.querySelectorAll(".lang-btn");
 function switchLanguage(lang) {
   document.documentElement.lang = lang;
 
-  document.querySelectorAll("[data-it]").forEach(el => {
+  // salva in localStorage (se disponibile)
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
+  } catch (e) {
+    // ignora eventuali errori (es. privacy mode)
+  }
+
+  // testi semplici + elementi che vogliono HTML
+  document.querySelectorAll("[data-it]").forEach((el) => {
     const value = el.getAttribute(`data-${lang}`);
-    if (value != null) {
+    if (value == null) return;
+
+    // se l'elemento dichiara che contiene HTML, usa innerHTML
+    if (el.dataset.html === "true") {
+      el.innerHTML = value;
+    } else {
       el.textContent = value;
     }
   });
@@ -22,7 +35,7 @@ function switchLanguage(lang) {
   updateDownloadLinks(lang);
 }
 
-langButtons.forEach(btn => {
+langButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     switchLanguage(btn.dataset.lang);
   });
@@ -49,7 +62,9 @@ function updateDownloadLinks(lang) {
 /* === ABOUT FULLSCREEN MODAL === */
 const aboutModal = document.getElementById("about-modal");
 const aboutOpenBtn = document.querySelector(".about-open");
-const aboutCloseBtn = aboutModal ? aboutModal.querySelector(".about-close") : null;
+const aboutCloseBtn = aboutModal
+  ? aboutModal.querySelector(".about-close")
+  : null;
 
 function openAboutModal() {
   if (!aboutModal) return;
@@ -64,7 +79,7 @@ function closeAboutModal() {
 }
 
 if (aboutOpenBtn) {
-  aboutOpenBtn.addEventListener("click", e => {
+  aboutOpenBtn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
     openAboutModal();
@@ -72,7 +87,7 @@ if (aboutOpenBtn) {
 }
 
 if (aboutCloseBtn) {
-  aboutCloseBtn.addEventListener("click", e => {
+  aboutCloseBtn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
     closeAboutModal();
@@ -80,15 +95,19 @@ if (aboutCloseBtn) {
 }
 
 if (aboutModal) {
-  aboutModal.addEventListener("click", e => {
+  aboutModal.addEventListener("click", (e) => {
     if (e.target === aboutModal) {
       closeAboutModal();
     }
   });
 }
 
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && aboutModal && aboutModal.classList.contains("open")) {
+document.addEventListener("keydown", (e) => {
+  if (
+    e.key === "Escape" &&
+    aboutModal &&
+    aboutModal.classList.contains("open")
+  ) {
     closeAboutModal();
   }
 });
@@ -109,7 +128,7 @@ function closeContactsModal() {
 }
 
 if (contactsOpenBtn) {
-  contactsOpenBtn.addEventListener("click", e => {
+  contactsOpenBtn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
     if (typeof closeFocused === "function") closeFocused();
@@ -120,20 +139,24 @@ if (contactsOpenBtn) {
 if (contactsModal) {
   const closeBtn = contactsModal.querySelector(".contacts-close");
   if (closeBtn) {
-    closeBtn.addEventListener("click", e => {
+    closeBtn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
       closeContactsModal();
     });
   }
 
-  contactsModal.addEventListener("click", e => {
+  contactsModal.addEventListener("click", (e) => {
     if (e.target === contactsModal) closeContactsModal();
   });
 }
 
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && contactsModal && contactsModal.classList.contains("open")) {
+document.addEventListener("keydown", (e) => {
+  if (
+    e.key === "Escape" &&
+    contactsModal &&
+    contactsModal.classList.contains("open")
+  ) {
     closeContactsModal();
   }
 });
